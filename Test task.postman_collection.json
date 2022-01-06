@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "9024ae89-2ab4-4691-97d9-890aebf948b5",
+		"name": "Kauri finance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET fee limit for currencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "POST Send password reset link registered email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"the endpoint returns the expected status code\", () => {",
+							"",
+							"  const expectedStatusCode = 201;",
+							"",
+							"  pm.response.to.have.status(expectedStatusCode);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/user/reset_password/send_link?email=anastasiaryzhkova42@gmail.com",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"reset_password",
+						"send_link"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "anastasiaryzhkova42@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Send password reset link unregistered email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"the endpoint returns the expected status code\", () => {",
+							"",
+							"  const expectedStatusCode = 400;",
+							"",
+							"  pm.response.to.have.status(expectedStatusCode);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/user/reset_password/send_link?email=notregisteredmail@gmail.com",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"reset_password",
+						"send_link"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "notregisteredmail@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Send password reset link invalid email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"the endpoint returns the expected status code\", () => {",
+							"",
+							"  const expectedStatusCode = 400;",
+							"",
+							"  pm.response.to.have.status(expectedStatusCode);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/user/reset_password/send_link?email=plainadressl.com",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"reset_password",
+						"send_link"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "plainadressl.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api.kauri.finance/",
+			"type": "string"
+		}
+	]
+}
